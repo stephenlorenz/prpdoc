@@ -11,7 +11,7 @@ At this time, there are three core PRP servers/virtual machines running Red Hat 
 ### Core PRP Servers ###
 
 | DNS Name | IP Address | Description  | Services | Location |
-| ------ | ------ | ----- |
+| ------ | ------ | ------ | ------ | ------ |
 |  PHSLXMGHES1  |  172.18.41.157  |   Elasticsearch Server  | Elasticsearch, Kibana, Nginx | Marlborough |
 |  PHSLXMGHRP1  |  172.18.41.140  |   RPR Application Server 1  | PRP Web Application, Nginx, Elasticsearch | Marlborough |
 |  PHSLXMGHRP2  |  172.31.166.191  |   RPR Application Server 2  | PRP Web Application, Nginx, Elasticsearch | Needham |
