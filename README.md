@@ -751,6 +751,40 @@ Hyperic is used to monitor the Partners Research Portal environment. If a web ap
 
 The SQL Server environment is maintained and supported by the MGH Lab of Computer Science. The SQL Server environment is mirrored in real-time. Failover is not automatic.  In addition, the SQL Server environment is backup nightly and backups are transferred off-site. Transaction logs can also be used to restore lost data in the event of data loss. Please refer to the DBA contact for SQL Server support.
 
+###Utilities###
+
+####Elasticdump####
+
+Elasticdump is an extremely useful tool which you can use to export and import Elasticsearch mappings and data into standard JSON formatted files. This is a lifesaver if you need to reindex an index from scratch such as when you realize that a certain field needs to indexed as a "not analyzed". You find out more about the tool here, https://github.com/taskrabbit/elasticsearch-dump.
+
+Here are some helpful examples. (You will need to temporarily disable basic authentication in nginx for elasticsearch in order to run these commands on production.) This exports the "analytics" index to file:
+
+	elasticdump \
+	--input=https://prpes.partners.org/analytics \
+	--output=./mapping.json \
+	--type=mapping
+
+This will import a newly defined index mapping from file:
+
+	elasticdump \ 
+	--output=https://prpes.partners.org/analytics \
+	--input=./mappingNotAnalysed.json \
+	--type=mapping
+
+This will dump all data in the index to a file named data.json
+
+	elasticdump \
+	--input=https://prpes.partners.org/analytics \
+	--output=./data.json
+
+This will import all data from the `data.json` file into the `analytics` index:
+
+	elasticdump \
+	--output=https://prpes.partners.org/analytics \
+	--input=./data.json
+	
+
+
 
 
 
